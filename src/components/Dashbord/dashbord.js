@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Ajout from "../ajout";
 import Card from "../Cards/card";
+import Matiere from "../Matiere/matier";
+import Classe from "../classe/classe";
+import Paiement from "../paiement/paiement";
 import {
   HomeOutlined,
   FormOutlined,
@@ -18,36 +21,44 @@ const menuItems = [
   { label: "Home", key: "1", icon: <HomeOutlined /> },
   { label: "Inscription", key: "2", icon: <FormOutlined /> },
   {
-    label: "Matiere",
+    label: "Matières",
     key: "sub1",
     icon: <BookOutlined />,
     children: [
-      { label: "Matiere 1", key: "3" },
-      { label: "Matiere 2", key: "4" },
-      { label: "Matiere 3", key: "5" },
+      { label: "Math", key: "3" },
+      { label: "Physique", key: "4" },
+      { label: "Anglais", key: "5" },
+      { label: "Français", key: "6" },
+      { label: "Informatique", key: "7" },
     ],
   },
   {
-    label: "Classe",
+    label: "Classes",
     key: "sub2",
     icon: <ApartmentOutlined />,
     children: [
-      { label: "Classe 1", key: "6" },
-      { label: "Classe 2", key: "8" },
+      { label: "1ère Année", key: "8" },
+      { label: "2ème Année", key: "9" },
+      { label: "3ème Année", key: "10" },
+      { label: "4ème Année", key: "11" },
     ],
   },
-  { label: "Paiement", key: "9", icon: <CreditCardOutlined /> },
+  { label: "Paiement", key: "12", icon: <CreditCardOutlined /> },
 ];
 
 const breadcrumbMap = {
   1: ["Home"],
   2: ["Home", "Inscription"],
-  3: ["Home", "Matiere 1"],
-  4: ["Home", "Matiere 2"],
-  5: ["Home", "Matiere 3"],
-  6: ["Home", "Classe 1"],
-  8: ["Home", "Classe 2"],
-  9: ["Home", "Paiement"],
+  3: ["Home", "Matières", "Math"],
+  4: ["Home", "Matières", "Physique"],
+  5: ["Home", "Matières", "Anglais"],
+  6: ["Home", "Matières", "Français"],
+  7: ["Home", "Matières", "Informatique"],
+  8: ["Home", "Classes", "1ère Année"],
+  9: ["Home", "Classes", "2ème Année"],
+  10: ["Home", "Classes", "3ème Année"],
+  11: ["Home", "Classes", "4ème Année"],
+  12: ["Home", "Paiement"],
 };
 
 const Dashboard = () => {
@@ -57,12 +68,31 @@ const Dashboard = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  const handleMenuClick = (e) => {
-    setSelectedMenu(e.key);
-  };
+  const handleMenuClick = (e) => setSelectedMenu(e.key);
+  const onSearch = (value) => console.log(value);
 
-  const onSearch = (value) => {
-    console.log(value); // Handle the search functionality here
+  const renderContent = () => {
+    switch (selectedMenu) {
+      case "1":
+        return <Card />;
+      case "2":
+        return <Ajout />;
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+        return <Matiere />;
+      case "8":
+      case "9":
+      case "10":
+      case "11":
+        return <Classe />;
+      case "12":
+        return <Paiement />;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -96,7 +126,7 @@ const Dashboard = () => {
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
-            {breadcrumbMap[selectedMenu].map((label, index) => (
+            {breadcrumbMap[selectedMenu]?.map((label, index) => (
               <Breadcrumb.Item key={index}>{label}</Breadcrumb.Item>
             ))}
           </Breadcrumb>
@@ -108,14 +138,7 @@ const Dashboard = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {selectedMenu === "1" && <Card />}
-            {selectedMenu === "2" && <Ajout />}
-            {selectedMenu === "3" && <h2>Welcome to Matiere 1</h2>}
-            {selectedMenu === "4" && <h2>Welcome to Matiere 2</h2>}
-            {selectedMenu === "5" && <h2>Welcome to Matiere 3</h2>}
-            {selectedMenu === "6" && <h2>Welcome to Classe 1</h2>}
-            {selectedMenu === "8" && <h2>Welcome to Classe 2</h2>}
-            {selectedMenu === "9" && <h2>Welcome to the Paiement Section</h2>}
+            {renderContent()}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
