@@ -1,0 +1,48 @@
+/* Style général pour le tableau */
+.table-container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Style du tableau */
+.student-table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style de l'en-tête du tableau */
+.student-table th {
+  border: 1px solid #ddd;
+  padding: 12px;
+  background-color: #2980b9;
+  color: white;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Style des lignes paires */
+.student-table tr:nth-child(even) {
+  background-color: #f2f3f4;
+}
+
+/* Style des lignes impaires */
+.student-table tr:nth-child(odd) {
+  background-color: white;
+}
+
+/* Style des cellules de données */
+.student-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}

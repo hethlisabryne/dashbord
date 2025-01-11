@@ -9,14 +9,15 @@ const Card = ({ title, value, icon, change, changeType }) => {
         {icon}
       </div>
       <div className="card-body">
-        <p className="value">{value || "No Data"}</p>
+        <p className="value">{value || "Aucune donnée"}</p>
         {change !== null && (
           <p
             className={`change ${
               changeType === "increase" ? "positive" : "negative"
             }`}
           >
-            {changeType === "increase" ? "+" : "-"} {change}% Since last month
+            {changeType === "increase" ? "+" : "-"} {change}% Par rapport au
+            mois dernier
           </p>
         )}
       </div>
@@ -28,23 +29,30 @@ const Cards = () => {
   return (
     <div className="cards-container">
       <Card
-        title="Total Students"
+        title="Total des Étudiants"
         value="0"
         icon={<span className="icon">👩‍🎓</span>}
         change={null}
         changeType={null}
       />
       <Card
-        title="Paid Students"
+        title="Étudiants Payés"
         value="0"
         icon={<span className="icon">💰</span>}
         change={null}
         changeType={null}
       />
       <Card
-        title="Unpaid Students"
+        title="Étudiants Non Payés"
         value="0"
         icon={<span className="icon">❌</span>}
+        change={null}
+        changeType={null}
+      />
+      <Card
+        title="Nombre de Classes"
+        value="0"
+        icon={<span className="icon">🏫</span>}
         change={null}
         changeType={null}
       />

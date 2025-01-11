@@ -1,7 +1,7 @@
 import React from "react";
-import "./paiement.css"; // Import the CSS file
+import "./paiement.css";
 
-const paiement = () => {
+const Paiement = () => {
   const students = [
     { nom: "Dupont", prenom: "Jean", classe: "Classe 1", paiement: "payé" },
     {
@@ -54,4 +54,4 @@ const paiement = () => {
   );
 };
 
-export default paiement;
+export default Paiement;

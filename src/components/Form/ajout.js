@@ -9,6 +9,7 @@ import {
   Result,
   Checkbox,
 } from "antd";
+import "./ajout.css";
 
 const formItemLayout = {
   labelCol: {
@@ -36,7 +37,7 @@ const Ajout = () => {
       values.adresse &&
       values.numTelephone &&
       values.classe &&
-      values.matiere && // Ensure Matiere is selected
+      values.matiere &&
       values.matiere.length > 0;
 
     setIsButtonDisabled(!isFormValid);
@@ -62,9 +63,7 @@ const Ajout = () => {
   };
 
   const onChangeCheckbox = (checkedValues) => {
-    // Check if "Paque" is selected
     if (checkedValues.includes("Paque")) {
-      // Select all other subjects
       form.setFieldsValue({
         matiere: [
           "Mathématiques",
